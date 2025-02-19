@@ -1,11 +1,11 @@
-import { Header } from "./components/Header"
-import { OrderButton } from "./components/OrderButton"
-import { OrderList } from "./components/OrderList"
-import { InventoryStatus } from "./components/InventoryStatus"
-import { PurchaseHistory } from "./components/PurchaseHistory"
-import { RecipeList } from "./components/RecipeList"
+import { Header } from "../components/Header"
+import { OrderButton } from "../components/OrderButton"
+import { OrderList } from "../components/OrderList"
+import { InventoryStatus } from "../components/InventoryStatus"
+import { PurchaseHistory } from "../components/PurchaseHistory"
+import { RecipeCarousel } from "../components/RecipeCarousel"
 
-function App() {
+export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -20,11 +20,9 @@ function App() {
             <PurchaseHistory />
           </div>
         </div>
-        <RecipeList />
+        <RecipeCarousel />
       </main>
     </div>
   )
 }
-
-export default App
 

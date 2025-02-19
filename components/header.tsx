@@ -1,4 +1,5 @@
 import { UtensilsCrossed } from "lucide-react"
+import { ThemeToggle } from "./ThemeToggle"
 
 export function Header() {
   return (
@@ -8,24 +9,25 @@ export function Header() {
           <UtensilsCrossed size={28} />
           <h1 className="text-2xl font-semibold">Jornada de Almuerzo Gratis</h1>
         </div>
-        <nav>
+        <nav className="flex items-center space-x-4">
           <ul className="flex space-x-4">
             <li>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a href="#" className="hover:text-secondary-foreground transition-colors">
                 Inicio
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a href="#" className="hover:text-secondary-foreground transition-colors">
                 Acerca de
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-accent transition-colors">
+              <a href="#" className="hover:text-secondary-foreground transition-colors">
                 Contacto
               </a>
             </li>
           </ul>
+          <ThemeToggle />
         </nav>
       </div>
     </header>

@@ -1,40 +1,28 @@
-import { useEffect, useState } from "react";
-import type { Schema } from "../amplify/data/resource";
-import { generateClient } from "aws-amplify/data";
+import { OrderButton } from "./components/order-button"
+import { OrderList } from "./components/oreder-list"
+import { InventoryStatus } from "./components/inventory"
+import { PurchaseHistory } from "./components/purchase-history"
+import { RecipeList } from "./components/recipe-list"
+import { Header } from "./components/header"
 
-const client = generateClient<Schema>();
-
-function App() {
-  const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
-
-  useEffect(() => {
-    client.models.Todo.observeQuery().subscribe({
-      next: (data) => setTodos([...data.items]),
-    });
-  }, []);
-
-  function createTodo() {
-    client.models.Todo.create({ content: window.prompt("Todo content") });
-  }
-
+export default function Home() {
   return (
-    <main>
-      <h1>My todos</h1>
-      <button onClick={createTodo}>+ new</button>
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id}>{todo.content}</li>
-        ))}
-      </ul>
-      <div>
-        🥳 App successfully hosted. Try creating a new todo.
-        <br />
-        <a href="https://docs.amplify.aws/react/start/quickstart/#make-frontend-updates">
-          Review next step of this tutorial.
-        </a>
-      </div>
-    </main>
-  );
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2">
+            <OrderButton />
+            <OrderList />
+          </div>
+          <div>
+            <InventoryStatus />
+            <PurchaseHistory />
+          </div>
+        </div>
+        <RecipeList />
+      </main>
+    </div>
+  )
 }
 
-export default App;
